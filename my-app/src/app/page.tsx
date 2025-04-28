@@ -14,7 +14,7 @@ import { GridPatternSpotlight } from "@/components/demo"
 import useScreenSize from "@/app/hooks/use-screen-size"
 import PixelTrail from "@/fancy/components/background/pixel-trail"
 import CSSBox from "@/components/ui/3d-css-box"
-// TextStream component integrated directly into page.tsx
+
 interface TextStreamProps {
   text: string
   speed?: number
