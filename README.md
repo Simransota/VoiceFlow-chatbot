@@ -4,6 +4,10 @@
 
 This project aims to recreate an immersive chat experience inspired by the video provided by South Digital and VoiceFlow. It enhances the interaction by incorporating additional features such as voice input, a pixel trail effect, and a 3D image cube for user interaction.
 
+## Screenshots / Demo
+
+https://github.com/user-attachments/assets/43cda593-c0cc-4863-8d06-762ff41acad8
+
 ## Features
 
 - **Voice Input**: Users can interact with the chat interface using voice commands, making the experience more natural and immersive.
@@ -12,11 +16,7 @@ This project aims to recreate an immersive chat experience inspired by the video
 
 ## Tech Stack
 
-- **Frontend Framework**: React.js (or any framework of choice)
-- **Voice Input**: Web Speech API / SpeechRecognition API
-- **Animations**: CSS3, Three.js (for 3D Cube)
-- **Pixel Trail Effect**: Custom JavaScript or CSS for animation effects
-- **Design**: Figma (for wireframes, UI elements, and interaction designs)
+- **Frontend Framework**: NextJs
 
 ## Installation
 
@@ -81,9 +81,6 @@ The project adheres to modern web development practices:
 - **Innovative Design**: The 3D cube is integrated in a way that it responds to user input and adds a dynamic element to the chat interface.
 - **Animations**: Various animations are incorporated, like pixel trails and smooth transitions, that give life to the chat experience.
 
-## Screenshots / Demo
-
-https://github.com/user-attachments/assets/43cda593-c0cc-4863-8d06-762ff41acad8
 
 ## Final Thoughts
 
