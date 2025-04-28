@@ -10,7 +10,7 @@ interface ChatMessageProps {
     return (
       <div
         className={cn(
-          isUser ? "text-black text-lg" : isTyping ? "text-gray-300 text-3xl font-medium" : "text-black text-3xl font-medium"
+         isTyping ? "text-gray-300 text-3xl font-medium" : "text-black text-3xl font-medium"
         )}
       >
         {text}

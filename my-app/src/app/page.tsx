@@ -8,7 +8,12 @@ import { ArrowRight } from "lucide-react"
 import ChatInput from "@/components/chat-input"
 import ChatMessage from "@/components/chat-message"
 import ThinkingIndicator from "@/components/thinking-indicator"
-
+import { LightPullThemeSwitcher } from "@/components/ui/light-pull-theme-switcher"
+import { Spotlight } from "@/components/ui/spotlight"
+import { GridPatternSpotlight } from "@/components/demo"
+import useScreenSize from "@/app/hooks/use-screen-size"
+import PixelTrail from "@/fancy/components/background/pixel-trail"
+import CSSBox from "@/components/ui/3d-css-box"
 // TextStream component integrated directly into page.tsx
 interface TextStreamProps {
   text: string
@@ -22,7 +27,7 @@ function TextStream({ text, speed = 30, onComplete }: TextStreamProps) {
   const [isComplete, setIsComplete] = useState(false)
   const [pendingUserMessage, setPendingUserMessage] = useState<string | null>(null);
 
-
+  const screenSize = useScreenSize()
   useEffect(() => {
     if (currentIndex < text.length) {
       const timer = setTimeout(() => {
@@ -53,6 +58,7 @@ function TextStream({ text, speed = 30, onComplete }: TextStreamProps) {
 }
 
 export default function Home() {
+  const screenSize = useScreenSize()
   const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>([
     { text: "Great! I'll be here whenever you're ready to chat. Just let me know!", isUser: false },
   ])
@@ -61,6 +67,7 @@ export default function Home() {
   const [isTyping, setIsTyping] = useState(false)
   const [currentTypingMessage, setCurrentTypingMessage] = useState("")
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  
 
   // Sample responses for demo purposes
   const botResponses = [
@@ -120,6 +127,13 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <div className="flex-1 flex flex-col">
+     
+        <PixelTrail
+          pixelSize={screenSize.lessThan(`md`) ? 16 : 24}
+          fadeDuration={500}
+          pixelClassName="bg-blue-600"
+        />
+      
         <header className="border-b border-gray-100 p-4 flex justify-between items-center">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
@@ -129,8 +143,8 @@ export default function Home() {
           <Link href="#" className="bg-black text-white px-4 py-2 rounded-full flex items-center text-sm font-medium">
             Get started <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
+          
         </header>
-
         <div className="flex-1 flex flex-col md:flex-row">
           <div className="p-6 md:p-12 flex-1 flex flex-col">
             <div className="mb-6">
@@ -138,7 +152,6 @@ export default function Home() {
                 Webflow X Voiceflow
               </Link>
             </div>
-
             <div className="flex-1 flex flex-col">
               
               <div className="flex-1 overflow-y-auto mb-4 space-y-6">
@@ -170,31 +183,6 @@ export default function Home() {
 
                 <div ref={messagesEndRef} />
               </div>
-              {/* Add this button where appropriate in your layout */}
-              {/* <button
-                className="border border-gray-300 rounded-md px-2 py-2 text-gray-700 font-medium hover:bg-gray-50"
-                onClick={() => {
-                  // This simulates a user message and generates a bot response
-                  setMessages((prev) => [...prev, {
-                    text: "Welcome to the Voiceflow AI agent on Webflow! You can build an experience like this to replace complex forms.",
-                    isUser: false
-                  }]);
-
-                  // Simulate the next message flow
-                  setTimeout(() => {
-                    setIsThinking(true);
-
-                    setTimeout(() => {
-                      setIsThinking(false);
-                      setIsTyping(true);
-
-                      setCurrentTypingMessage("Can you tell me your name and a bit about your business and what you're looking to build? I'll send you a summary by email after.");
-                    }, 2000);
-                  }, 1000);
-                }}
-              >
-                Try me
-              </button> */}
               <ChatInput
                 value={inputValue}
                 onChange={setInputValue}
@@ -207,7 +195,23 @@ export default function Home() {
 
           <div className="hidden md:block relative flex-1">
             <div className="absolute inset-0 flex items-center justify-center text-xs font-mono">
-              <img src="https://cdn.prod.website-files.com/67c8b85bd35a3a51dec5fdff/67c8b85bd35a3a51dec6018c_Group%201%20(1).svg" />
+            <CSSBox
+        ref={null}
+        width={320}
+        height={320}
+        depth={320}
+        perspective={800}
+        draggable
+        faces={{
+          front:  <img src="https://cdn.prod.website-files.com/67c8b85bd35a3a51dec5fdff/67c8b85bd35a3a51dec6018c_Group%201%20(1).svg"  alt="Front"  />,
+          back:   <img src="https://cdn.prod.website-files.com/67c8b85bd35a3a51dec5fdff/67c8b85bd35a3a51dec6018c_Group%201%20(1).svg"   alt="Back"   />,
+          left:   <img src="https://cdn.prod.website-files.com/67c8b85bd35a3a51dec5fdff/67c8b85bd35a3a51dec6018c_Group%201%20(1).svg"   alt="Left"   />,
+          right:  <img src="https://cdn.prod.website-files.com/67c8b85bd35a3a51dec5fdff/67c8b85bd35a3a51dec6018c_Group%201%20(1).svg"  alt="Right"  />,
+          top:    <img src="https://cdn.prod.website-files.com/67c8b85bd35a3a51dec5fdff/67c8b85bd35a3a51dec6018c_Group%201%20(1).svg"    alt="Top"    />,
+          bottom: <img src="https://cdn.prod.website-files.com/67c8b85bd35a3a51dec5fdff/67c8b85bd35a3a51dec6018c_Group%201%20(1).svg" alt="Bottom" />,
+        }}
+      />
+              {/* <img src="https://cdn.prod.website-files.com/67c8b85bd35a3a51dec5fdff/67c8b85bd35a3a51dec6018c_Group%201%20(1).svg" /> */}
             </div>
           </div>
         </div>
@@ -241,7 +245,7 @@ export default function Home() {
             Made in Webflow
           </Link>
         </footer>
-      </div>
+        </div>
     </main>
   )
 }

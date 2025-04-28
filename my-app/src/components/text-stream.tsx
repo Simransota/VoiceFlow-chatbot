@@ -37,7 +37,7 @@ export default function TextStream({ text, speed = 30, onComplete }: TextStreamP
   return (
     <span>
       {displayedText}
-      {!isComplete && <span className="animate-pulse">|</span>}
+      {!isComplete && <span className="animate-pulse">_</span>}
     </span>
   )
 }
