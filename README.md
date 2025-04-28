@@ -83,7 +83,7 @@ The project adheres to modern web development practices:
 
 ## Screenshots / Demo
 
-[Include any relevant screenshots or a link to a demo here.]
+https://github.com/user-attachments/assets/43cda593-c0cc-4863-8d06-762ff41acad8
 
 ## Final Thoughts
 
