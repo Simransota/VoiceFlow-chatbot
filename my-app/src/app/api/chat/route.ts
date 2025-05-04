@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const { text } = await generateText({
       model: groq("llama3-70b-8192"),
       prompt: message,
-      system: "You are a helpful, friendly AI assistant. Provide concise, helpful responses to the user's questions.",
+      system: "You are a helpful AI assistant. Answer questions clearly and concisely in 1–2 sentences. Be direct and avoid unnecessary elaboration.",
       maxTokens: 500,
     })
 

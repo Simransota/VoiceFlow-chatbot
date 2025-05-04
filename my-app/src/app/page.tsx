@@ -72,6 +72,16 @@ export default function Home() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
+  function formatResponseText(text: string): string {
+    // Example formatting: trim, normalize whitespace, etc.
+    return text
+      .trim()
+      .replace(/\n{2,}/g, "\n\n")     // Collapse extra newlines
+      .replace(/\s{2,}/g, " ")        // Collapse extra spaces
+      .replace(/\\n/g, "\n");         // Handle escaped newlines
+  }
+  
+
   const handleSendMessage = async () => {
     if (inputValue.trim() === "") return
 
@@ -104,7 +114,7 @@ export default function Home() {
       setIsTyping(true)
 
       // Set the AI response for typing animation
-      setCurrentTypingMessage(data.response)
+      setCurrentTypingMessage(formatResponseText(data.response))
 
       // TextStream component will handle adding the message when typing is complete
     } catch (error) {

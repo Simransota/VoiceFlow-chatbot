@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import ReactMarkdown from "react-markdown"
 
 interface ChatMessageProps {
     text: string
@@ -13,7 +14,7 @@ interface ChatMessageProps {
          isTyping ? "text-gray-300 text-3xl font-medium" : "text-black text-3xl font-medium"
         )}
       >
-        {text}
+        <ReactMarkdown>{text}</ReactMarkdown>
       </div>
     )
   }
